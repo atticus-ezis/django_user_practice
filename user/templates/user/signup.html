@@ -3,7 +3,12 @@
   {% csrf_token %} {{form.as_p}}
   <button type="submit">Signup</button>
 </form>
+<br>
+<h3>Already have an account?</h3>
+<a href={% url 'login' %}>
+  <button type="button">Login</button>
+</a>
 
 {% if form.error %} {% for field in form %}
-<li>{{field.error}}</li>
+<li style="color: red;">{{field.error}}</li>
 {% endfor %} {% endif %}
