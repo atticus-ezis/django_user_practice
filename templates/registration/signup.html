@@ -1,0 +1,9 @@
+<h1>Signup</h1>
+<form method="post">
+  {% csrf_token %} {{form.as_p}}
+  <button type="submit">Signup</button>
+</form>
+
+{% if form.error %} {% for field in form %}
+<li>{{field.error}}</li>
+{% endfor %} {% endif %}
