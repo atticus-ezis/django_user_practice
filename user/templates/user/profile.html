@@ -1,5 +1,11 @@
 <h1>This is {{user.username}}'s Profile Page!</h1>
-
-<button>Create Note</button>
+<a href={% url 'create_note' username=user.username %}>
+  <button>Create Note</button>
+</a>
 
 <h1>Your Notes</h1>
+{% for note in notes %}
+<h1>{{note.title}}</h1>
+<p>{{note.body}}</p>
+<p>{{note.date}}</p>
+{% endfor %}

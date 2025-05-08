@@ -3,6 +3,7 @@ from .forms import SignupForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from notes.models import Note
 
 
 def signup(request):
@@ -21,10 +22,12 @@ def profile_redirect(request):
 
 def profile(request, username):
     user = get_object_or_404(User, username=username)
-    return render(request, 'user/profile.html', {'user':user})
+    notes = Note.objects.filter(user=user)
+    context ={'user':user, 'notes':notes}
+    return render(request, 'user/profile.html', context)
 
 
 
-# Create your views here.
+
 
 
