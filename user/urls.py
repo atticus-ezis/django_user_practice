@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views
-from .views import profile, signup
+from .views import profile, signup, profile_redirect
 
 urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
     path('signup/', signup, name='signup'),
-    path('profile/', profile, name='profile')
+    path('profile-redirect/', profile_redirect, name='profile-redirect'),
+    path('<str:username>/', profile, name='profile'),
+    # path('notes/', include('notes.urls')),
 ]
