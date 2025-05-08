@@ -7,5 +7,6 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('profile-redirect/', profile_redirect, name='profile-redirect'),
     path('<str:username>/', profile, name='profile'),
-    # path('notes/', include('notes.urls')),
+    
+    path('<str:username>/notes/', include('notes.urls')),
 ]

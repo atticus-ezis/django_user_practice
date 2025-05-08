@@ -1,0 +1,11 @@
+<h1>Create Note</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit">Post</button>
+</form>
+<br>
+<p>or</p>
+<a href={% url 'profile' username=username %}>
+    <button type="button">Back</button>
+</a>
