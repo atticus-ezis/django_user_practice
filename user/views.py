@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignupForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 
 def signup(request):
     if request.method == 'POST':
@@ -9,14 +11,16 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            redirect('profile')
+            return redirect('profile', username=user.username)
     else:
         form = SignupForm()
     return render(request, 'user/signup.html', {'form':form})
 
-@login_required
-def profile(request):
-    user = request.user
+def profile_redirect(request):
+    return redirect('profile', username=request.user.username)
+
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
     return render(request, 'user/profile.html', {'user':user})
 
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'user',
+    'notes',
 ]
 
 MIDDLEWARE = [
@@ -124,4 +125,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'account/profile/'
+LOGIN_REDIRECT_URL = '/user/profile-redirect/'
